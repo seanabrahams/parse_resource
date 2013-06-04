@@ -675,7 +675,15 @@ module ParseResource
         if(Kernel.respond_to?(klass.name))
           Kernel.send(klass.name, value)
         elsif klass.respond_to?(:parse)
-          klass.parse(value)
+          value = klass.parse(value)
+          if value.respond_to?(:to_pointer)
+            value = value.to_pointer
+            # if we have a mapped class then we need to change back to the parse 
+            # class here.
+            klass_name = ParseResource::Base.parse_class_name_for_model(value['className'])
+            value['className'] = klass_name unless klass_name.nil?
+          end
+          value
         else
           value
         end
