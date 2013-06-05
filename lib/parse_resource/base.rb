@@ -469,25 +469,23 @@ module ParseResource
     end
 
     def save
-      create_or_update
+      begin
+        if valid?
+          if new?
+            return create
+          else
+            return update
+          end
+        else
+          false
+        end
+      rescue 
+        false
+      end
     end
 
     def save!
-      create_or_update || raise(RecordNotSaved)
-    end
-
-    def create_or_update
-      if valid?
-        if new?
-          return create
-        else
-          return update
-        end
-      else
-        false
-      end
-    rescue
-      false
+      save || raise(RecordNotSaved)
     end
 
     def create
