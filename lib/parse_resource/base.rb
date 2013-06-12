@@ -136,7 +136,9 @@ module ParseResource
     end
 
     def self.to_date_object(date)
-      date = date.to_time if date.respond_to?(:to_time)
+      if date.class == Date
+        date = date.to_time if date.respond_to?(:to_time)
+      end
       {"__type" => "Date", "iso" => date.iso8601} if date && (date.is_a?(Date) || date.is_a?(DateTime) || date.is_a?(Time))
     end
 
@@ -630,7 +632,7 @@ module ParseResource
         when "Object"
           result = klass_name.constantize.new(attrs[k], false)
         when "Date"
-          result = DateTime.parse(attrs[k]["iso"]).to_time_in_current_zone
+          result = DateTime.parse(attrs[k]["iso"])
         when "File"
           result = attrs[k]["url"]
         when "GeoPoint"
