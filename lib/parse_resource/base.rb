@@ -635,6 +635,8 @@ module ParseResource
           result = DateTime.parse(attrs[k]["iso"])
         when "File"
           result = attrs[k]["url"]
+        when "Bytes"
+          result = attrs[k]["base64"]
         when "GeoPoint"
           result = ParseGeoPoint.new(attrs[k])
         end #todo: support other types https://www.parse.com/docs/rest#objects-types
