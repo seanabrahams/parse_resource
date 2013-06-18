@@ -632,7 +632,7 @@ module ParseResource
         when "Object"
           result = klass_name.constantize.new(attrs[k], false)
         when "Date"
-          result = DateTime.parse(attrs[k]["iso"])
+          result = (attrs[k]["iso"]).to_datetime
         when "File"
           result = attrs[k]["url"]
         when "Bytes"
