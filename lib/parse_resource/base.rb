@@ -400,7 +400,7 @@ module ParseResource
     # Find a ParseResource::Base object by chaining #where method calls.
     #
     def self.where(*args)
-      Query.new(self.parse_class || self.class).where(*args)
+      Query.new(self).where(*args)
     end
 
 
@@ -408,7 +408,7 @@ module ParseResource
 
 
     def self.chunk(attribute)
-      Query.new(self.parse_class || self.class).chunk(attribute)
+      Query.new(self).chunk(attribute)
     end
 
     # Create a ParseResource::Base object.
