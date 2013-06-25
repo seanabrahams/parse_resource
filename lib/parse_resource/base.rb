@@ -129,7 +129,7 @@ module ParseResource
     end
 
     def to_pointer
-      klass_name = self.class.model_name.to_s
+      klass_name = self.parse_class || self.class.model_name
       klass_name = "_User" if klass_name == "User"
       klass_name = "_Installation" if klass_name == "Installation"
       {"__type" => "Pointer", "className" => klass_name.to_s, "objectId" => self.id}
