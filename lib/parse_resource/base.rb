@@ -657,8 +657,8 @@ module ParseResource
         klass_name = ParseResource::Base.parse_class_name_for_model(v['className'])
         v['className'] = klass_name unless klass_name.nil?
       end
-      @unsaved_attributes[k.to_s] = v unless v.nil? || v == @attributes[k.to_s] # || @unsaved_attributes[k.to_s]
-      @attributes[k.to_s] = v unless v.nil?
+      @unsaved_attributes[k.to_s] = v unless v == @attributes[k.to_s] # || @unsaved_attributes[k.to_s]
+      @attributes[k.to_s] = v
       v
     end
 
