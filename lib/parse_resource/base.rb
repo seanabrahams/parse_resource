@@ -268,7 +268,7 @@ module ParseResource
     end
 
     def self.parse(id)
-      self.find(id)
+      self.find(id) unless id.nil? || id.blank?
     end
 
 
