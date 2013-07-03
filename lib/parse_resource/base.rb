@@ -566,7 +566,8 @@ module ParseResource
 
     def coerce_attributes(attributes)
       attributes.keys.each do |key|
-        attributes[key] = coerce_attribute(key, attributes[key])
+        value = coerce_attribute(key, attributes[key])
+        attributes[key] = value unless value.nil?
       end
       attributes
     end
@@ -656,8 +657,8 @@ module ParseResource
         klass_name = ParseResource::Base.parse_class_name_for_model(v['className'])
         v['className'] = klass_name unless klass_name.nil?
       end
-      @unsaved_attributes[k.to_s] = v unless v == @attributes[k.to_s] # || @unsaved_attributes[k.to_s]
-      @attributes[k.to_s] = v
+      @unsaved_attributes[k.to_s] = v unless v.nil? || v == @attributes[k.to_s] # || @unsaved_attributes[k.to_s]
+      @attributes[k.to_s] = v unless v.nil?
       v
     end
 
