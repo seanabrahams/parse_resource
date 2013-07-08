@@ -636,7 +636,7 @@ module ParseResource
           # if we are using a mapped class then we need to find that class here
           # and call its find method
           name = ParseResource::Base.model_name_for_parse_class(klass_name) || klass_name
-          result = name.constantize.new("objectId" => attrs[k]["objectId"], false, false)
+          result = name.constantize.new({"objectId" => attrs[k]["objectId"]}, false, false)
         when "Object"
           result = klass_name.constantize.new(attrs[k], false)
         when "Date"
