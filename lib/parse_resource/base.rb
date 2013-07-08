@@ -624,7 +624,7 @@ module ParseResource
     end
 
     def get_attribute(k)
-      self.reload if k != "objectId" || @lazy_loading
+      self.reload if ( k != "objectId" && @lazy_loading )
 
       attrs = @unsaved_attributes[k.to_s] ? @unsaved_attributes : @attributes
       case attrs[k]
