@@ -13,6 +13,11 @@ class Query
     self
   end
 
+  def http_method(http_method)
+    criteria[:http_method] = http_method
+    self
+  end
+
   def limit(limit)
     # If > 1000, set chunking, because large queries over 1000 need it with Parse
     chunk(1000) if limit > 1000
@@ -101,8 +106,13 @@ class Query
 
     return chunk_results(params) if criteria[:chunk]
 
-    resp = @klass.resource.get(:params => params)
-    
+    # Add support for POST when query params are too large
+    if criteria[:http_method] && criteria[:http_method].downcase.to_sym == :post
+      resp = @klass.resource.post(params, { 'X-HTTP-Method-Override' => 'GET' })
+    else
+      resp = @klass.resource.get(:params => params)
+    end
+
     if criteria[:count] == 1
       results = JSON.parse(resp)['count']
       return results.to_i

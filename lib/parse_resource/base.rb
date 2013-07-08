@@ -223,7 +223,7 @@ module ParseResource
         batch_json = { "requests" => [] }
 
         objects.each do |item|
-          method ||= (item.new?) ? "POST" : "PUT"
+          method = item.id ? "PUT" : "POST" unless method && method == "DELETE"
           object_path = "/1/#{item.class.model_name_uri}"
           object_path = "#{object_path}/#{item.id}" if item.id
           json = {

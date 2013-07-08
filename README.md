@@ -153,6 +153,21 @@ Post.where(:bar => "foo").count #=> 1337
 
 ```
 
+Finding with large number of params:
+
+You may run into the situation where your query is too large for a GET request.
+In this instance Parse will return a 502 - Bad Gateway error. To get around 
+this problem we need to POST the query instead of GETing it. See 
+https://parse.com/questions/502-error-when-query-with-huge-contains 
+for more details.
+
+TODO: Auto-detect when a GET query is too large and switch to POST 
+automatically OR always go with POST.
+
+```
+Post.http_method(:post).where(:param1 => { "$in" => [large array of values] }).all
+```
+
 Pagination with [kaminari](https://github.com/amatsuda/kaminari):
 
 ```ruby

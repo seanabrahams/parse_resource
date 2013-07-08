@@ -93,13 +93,13 @@ class TestParseResource < Test::Unit::TestCase
     end
   end
 
-	def test_find_should_throw_an_exception_if_object_is_nil
+  def test_find_should_throw_an_exception_if_object_is_nil
     VCR.use_cassette('test_find_should_throw_an_exception_if_object_is_nil', :record => :new_episodes) do
-  		assert_raise RecordNotFound do
-  			Post.find("")
-  		end
+      assert_raise RecordNotFound do
+        Post.find("")
+      end
     end
-	end
+  end
 
   def test_first
     VCR.use_cassette('test_first', :record => :new_episodes) do
@@ -128,6 +128,14 @@ class TestParseResource < Test::Unit::TestCase
       find  = Post.find_all_by_title("Welcome111")
       assert_equal where.first.id, find.first.id 
       assert_equal find.class, Array
+    end
+  end
+
+  def test_query_via_post
+    VCR.use_cassette('test_query_via_post', :record => :new_episodes) do
+      p1 = Post.create(:title => "Welcome to Post")
+      p2 = Post.where(:title => "Welcome to Post").http_method(:post).first
+      assert_equal p2.title, p1.title
     end
   end
 

@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://tIcrV2dwbkT7AqjU8Cn8FZFU60hk5qCnMXlJnJQq:H6xYlZzvwBZHUBjoyrFKXkWZoCVfqrmC3ARXMZjq@api.parse.com/1/classes/Post
+    body:
+      encoding: UTF-8
+      string: ! '{"title":"Welcome to Post"}'
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '27'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 08 Jul 2013 20:21:10 GMT
+      Location:
+      - https://api.parse.com/1/classes/Post/BOR2lLBEsc
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlZTlkNWQxNmIxYjQ5NTdhMzdkYjMyZGM1NjNlNDE1Yjk%3D--c7a06132025a50d6448498cd2025e5727d5772f9;
+        domain=.parse.com; path=/; expires=Wed, 07-Aug-2013 20:21:10 GMT; secure;
+        HttpOnly
+      Status:
+      - 201 Created
+      X-Runtime:
+      - '0.054399'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '64'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"createdAt":"2013-07-08T20:21:10.105Z","objectId":"BOR2lLBEsc"}'
+    http_version: 
+  recorded_at: Mon, 08 Jul 2013 20:21:11 GMT
+- request:
+    method: post
+    uri: https://tIcrV2dwbkT7AqjU8Cn8FZFU60hk5qCnMXlJnJQq:H6xYlZzvwBZHUBjoyrFKXkWZoCVfqrmC3ARXMZjq@api.parse.com/1/classes/Post
+    body:
+      encoding: US-ASCII
+      string: where=%7B%22title%22%3A%22Welcome%20to%20Post%22%7D&limit=1
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      X-Http-Method-Override:
+      - GET
+      Content-Length:
+      - '59'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 08 Jul 2013 20:21:14 GMT
+      Etag:
+      - ! '"7ad9a51ae8c7da627ffc1f1f62d4edc7"'
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlY2I1OTFiNmJmYTM1MTVkMWU3YzM4ZTM4ZmQ3NTg3NGM%3D--18c6a61a3c708e5238363cf05947b7ceb96d5227;
+        domain=.parse.com; path=/; expires=Wed, 07-Aug-2013 20:21:14 GMT; secure;
+        HttpOnly
+      Status:
+      - 200 OK
+      X-Runtime:
+      - '0.089551'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '143'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"results":[{"title":"Welcome to Post","createdAt":"2013-07-08T20:21:10.105Z","updatedAt":"2013-07-08T20:21:10.105Z","objectId":"BOR2lLBEsc"}]}'
+    http_version: 
+  recorded_at: Mon, 08 Jul 2013 20:21:14 GMT
+recorded_with: VCR 2.4.0
