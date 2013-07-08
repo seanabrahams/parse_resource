@@ -161,9 +161,6 @@ this problem we need to POST the query instead of GETing it. See
 https://parse.com/questions/502-error-when-query-with-huge-contains 
 for more details.
 
-TODO: Auto-detect when a GET query is too large and switch to POST 
-automatically OR always go with POST.
-
 ```
 Post.http_method(:post).where(:param1 => { "$in" => [large array of values] }).all
 ```
@@ -360,6 +357,7 @@ To-do
 *   Push notifications
 *   Better type-casting
 *   HTTP request error handling
+*   Auto-detect when a GET query is too large and switch to POST automatically OR always go with POST.
 
 User authentication is my top priority feature. Several people have specifically requested it, and Parse just began exposing [User objects in the REST API](https://www.parse.com/docs/rest#users).
 
