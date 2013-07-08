@@ -44,13 +44,16 @@ module ParseResource
     #
     # @params [Hash], [Boolean] a `Hash` of attributes and a `Boolean` that should be false only if the object already exists
     # @return [ParseResource::Base] an object that subclasses `Parseresource::Base`
-    def initialize(attributes = {}, new=true)     
+    def initialize(attributes = {}, new=true, loaded_from_parse=true)     
       if new
         @unsaved_attributes = attributes.stringify_keys.slice(* self.class.accepted_fields)
         @unsaved_attributes = coerce_attributes(@unsaved_attributes)
       else
         @unsaved_attributes = {}
       end
+
+
+      @deferred_loading = !loaded_from_parse
 
       @attributes = {}
       self.error_instances = []
@@ -592,6 +595,8 @@ module ParseResource
       @attributes.update(fresh_object.instance_variable_get('@attributes'))
       @unsaved_attributes = {}
 
+      @deferred_loading = false
+
       self
     end
 
@@ -619,6 +624,8 @@ module ParseResource
     end
 
     def get_attribute(k)
+      self.reload! if k != "objectId" || @deferred_loading
+
       attrs = @unsaved_attributes[k.to_s] ? @unsaved_attributes : @attributes
       case attrs[k]
       when Hash
@@ -629,7 +636,7 @@ module ParseResource
           # if we are using a mapped class then we need to find that class here
           # and call its find method
           name = ParseResource::Base.model_name_for_parse_class(klass_name) || klass_name
-          result = name.constantize.find(attrs[k]["objectId"])
+          result = name.constantize.new("objectId" => attrs[k]["objectId"], false, false)
         when "Object"
           result = klass_name.constantize.new(attrs[k], false)
         when "Date"
@@ -648,6 +655,8 @@ module ParseResource
     end
 
     def set_attribute(k, v)
+      self.reload! if @deferred_loading
+
       if v.is_a?(Date) || v.is_a?(Time) || v.is_a?(DateTime)
         v = self.class.to_date_object(v)
       elsif v.respond_to?(:to_pointer)
