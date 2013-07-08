@@ -271,7 +271,7 @@ module ParseResource
     end
 
     def self.parse(id)
-      self.find(id) unless id.nil? || id.blank?
+      self.new({"objectId" => id}, false, false) unless id.nil? || id.blank?
     end
 
 
@@ -655,7 +655,7 @@ module ParseResource
     end
 
     def set_attribute(k, v)
-      self.reload! if @deferred_loading
+      self.reload! if k != "objectId" || @deferred_loading
 
       if v.is_a?(Date) || v.is_a?(Time) || v.is_a?(DateTime)
         v = self.class.to_date_object(v)
