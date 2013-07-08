@@ -624,7 +624,7 @@ module ParseResource
     end
 
     def get_attribute(k)
-      self.reload! if k != "objectId" || @deferred_loading
+      self.reload if k != "objectId" || @deferred_loading
 
       attrs = @unsaved_attributes[k.to_s] ? @unsaved_attributes : @attributes
       case attrs[k]
@@ -655,7 +655,7 @@ module ParseResource
     end
 
     def set_attribute(k, v)
-      self.reload! if k != "objectId" || @deferred_loading
+      self.reload if @deferred_loading
 
       if v.is_a?(Date) || v.is_a?(Time) || v.is_a?(DateTime)
         v = self.class.to_date_object(v)
