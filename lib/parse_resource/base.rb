@@ -53,7 +53,7 @@ module ParseResource
       end
 
 
-      @deferred_loading = !loaded_from_parse
+      @lazy_loading = !loaded_from_parse
 
       @attributes = {}
       self.error_instances = []
@@ -589,9 +589,9 @@ module ParseResource
     end
 
     def reload
-      return false if new?
+      return false if ( new? && @lazy_loading == false )
 
-      @deferred_loading = false
+      @lazy_loading = false
 
       fresh_object = self.class.find(id)
       @attributes.update(fresh_object.instance_variable_get('@attributes'))
@@ -624,7 +624,7 @@ module ParseResource
     end
 
     def get_attribute(k)
-      self.reload if k != "objectId" || @deferred_loading
+      self.reload if k != "objectId" || @lazy_loading
 
       attrs = @unsaved_attributes[k.to_s] ? @unsaved_attributes : @attributes
       case attrs[k]
@@ -655,7 +655,7 @@ module ParseResource
     end
 
     def set_attribute(k, v)
-      self.reload if @deferred_loading
+      self.reload if @lazy_loading
 
       if v.is_a?(Date) || v.is_a?(Time) || v.is_a?(DateTime)
         v = self.class.to_date_object(v)
