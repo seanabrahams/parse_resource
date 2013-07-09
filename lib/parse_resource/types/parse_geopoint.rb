@@ -1,4 +1,5 @@
 class ParseGeoPoint
+
   attr_accessor :latitude, :longitude
 
   def initialize(hash=nil)
@@ -13,7 +14,7 @@ class ParseGeoPoint
   end
 
   def to_pointer
-    {"__type"=>"GeoPoint", :latitude=> self.latitude, :longitude => self.longitude}
+    HashWithIndifferentAccess.new({"__type"=>"GeoPoint", :latitude=> self.latitude, :longitude => self.longitude})
   end
 
 end
