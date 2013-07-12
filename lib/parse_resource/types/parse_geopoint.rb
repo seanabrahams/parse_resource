@@ -10,11 +10,10 @@ class ParseGeoPoint
       self.latitude = hash["latitude"] || hash[:latitude]
       self.longitude = hash["longitude"] || hash[:longitude]
     end
-
   end
 
   def to_pointer
-    HashWithIndifferentAccess.new({"__type"=>"GeoPoint", :latitude=> self.latitude, :longitude => self.longitude})
+    HashWithIndifferentAccess.new({"__type"=>"GeoPoint", :latitude=> self.latitude.to_f, :longitude => self.longitude.to_f })
   end
 
 end
