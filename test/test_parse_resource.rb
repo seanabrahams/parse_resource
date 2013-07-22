@@ -261,6 +261,27 @@ class TestParseResource < Test::Unit::TestCase
     end
   end
 
+  def test_save!
+    VCR.use_cassette('test_save', :record => :new_episodes) do
+      Post.destroy_all
+      @post = Post.create(:title => "testing save")
+      @post.save
+      assert @post.attributes['objectId']
+      assert @post.attributes['updatedAt']
+      assert @post.attributes['createdAt']
+    end
+  end
+
+  def test_save_fails!
+    VCR.use_cassette('test_save_fails', :record => :new_episodes) do
+      Post.destroy_all
+      @post = Post.new
+      assert_raises RecordNotSaved do
+        @post.save!
+      end
+    end
+  end
+
   def test_each
     VCR.use_cassette('test_each', :record => :new_episodes) do
       Post.destroy_all

@@ -389,6 +389,14 @@ module ParseResource
     end
 
     def save
+      create_or_update
+    end
+
+    def save!
+      create_or_update || raise(RecordNotSaved)
+    end
+
+    def create_or_update
       if valid?
         run_callbacks :save do
           if new?
@@ -400,7 +408,8 @@ module ParseResource
       else
         false
       end
-      rescue false
+    rescue
+      false
     end
 
     def create
