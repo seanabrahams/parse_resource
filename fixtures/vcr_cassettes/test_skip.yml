@@ -192,4 +192,247 @@ http_interactions:
       string: ! '{"results":[{"title":"skip","author":"14-author","createdAt":"2013-06-04T02:52:48.359Z","updatedAt":"2013-06-04T02:52:48.359Z","objectId":"63QwWDz9C1"}]}'
     http_version: 
   recorded_at: Tue, 04 Jun 2013 02:52:50 GMT
+- request:
+    method: get
+    uri: https://api.parse.com/1/classes/Post?where=%7B%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Access-Control-Request-Method:
+      - ! '*'
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 20 Aug 2013 21:18:39 GMT
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlZmFlYzZiOWU2ZmY5NzY1NTVkNjMzYzhkZWNiMjE5OWE%3D--2c2ecdb754663568b5ecd59d016778db2729a907;
+        domain=.parse.com; path=/; expires=Thu, 19-Sep-2013 21:18:39 GMT; secure;
+        HttpOnly
+      Status:
+      - 401 Unauthorized
+      Www-Authenticate:
+      - Basic realm="Parse"
+      X-Runtime:
+      - '0.005095'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"error":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2013 21:18:39 GMT
+- request:
+    method: get
+    uri: https://W03euqtGHZS5E2ItUyuUalxptRXQSLQljOk115hQ:4Qo41nBz103elVLzMjnKyILoqbXBlHVsjz84sL0E@api.parse.com/1/classes/Post?where=%7B%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 20 Aug 2013 21:22:36 GMT
+      Etag:
+      - ! '"e2412c1ffbfb6b53a82a9daf665b2c1a"'
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlMmY1NTg4OWFmM2M3YjhhMTg0OTJlNzMzZTE1N2QzYzY%3D--0a09522596380d974ddf4f7be004dfdba1dcabdc;
+        domain=.parse.com; path=/; expires=Thu, 19-Sep-2013 21:22:36 GMT; secure;
+        HttpOnly
+      Status:
+      - 200 OK
+      X-Runtime:
+      - '0.032700'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '14'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"results":[]}'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2013 21:22:36 GMT
+- request:
+    method: post
+    uri: https://W03euqtGHZS5E2ItUyuUalxptRXQSLQljOk115hQ:4Qo41nBz103elVLzMjnKyILoqbXBlHVsjz84sL0E@api.parse.com/1/batch
+    body:
+      encoding: UTF-8
+      string: ! '{"requests":[{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"0-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"1-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"2-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"3-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"4-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"5-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"6-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"7-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"8-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"9-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"10-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"11-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"12-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"13-author"}},{"method":"POST","path":"/1/classes/Post","body":{"title":"skip","author":"14-author"}}]}'
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1324'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 20 Aug 2013 21:22:37 GMT
+      Etag:
+      - ! '"59733c44247cd30be6332d0ac370b4c8"'
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlOWIzMTk2MzBkNmMzYjJhNmZlM2ZmN2I5MmEwMmU2ZjI%3D--c3df778bb7816f01e6cebdb855ca393845fce358;
+        domain=.parse.com; path=/; expires=Thu, 19-Sep-2013 21:22:37 GMT; secure;
+        HttpOnly
+      Status:
+      - 200 OK
+      X-Runtime:
+      - '0.226066'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '1156'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '[{"success":{"createdAt":"2013-08-20T21:22:37.306Z","objectId":"bFXJwBIpcu"}},{"success":{"createdAt":"2013-08-20T21:22:37.317Z","objectId":"vVRoG4M2nM"}},{"success":{"createdAt":"2013-08-20T21:22:37.329Z","objectId":"wH9n06iNlD"}},{"success":{"createdAt":"2013-08-20T21:22:37.344Z","objectId":"l2WaTeuzjc"}},{"success":{"createdAt":"2013-08-20T21:22:37.355Z","objectId":"G55lc5IA5N"}},{"success":{"createdAt":"2013-08-20T21:22:37.367Z","objectId":"oG93ynK9kz"}},{"success":{"createdAt":"2013-08-20T21:22:37.378Z","objectId":"en6KTPbqaV"}},{"success":{"createdAt":"2013-08-20T21:22:37.390Z","objectId":"ghdlpkcaim"}},{"success":{"createdAt":"2013-08-20T21:22:37.401Z","objectId":"20yVxF16CO"}},{"success":{"createdAt":"2013-08-20T21:22:37.413Z","objectId":"Tqi4LWc16D"}},{"success":{"createdAt":"2013-08-20T21:22:37.424Z","objectId":"8N3y984qyx"}},{"success":{"createdAt":"2013-08-20T21:22:37.435Z","objectId":"XFiz56Jcdz"}},{"success":{"createdAt":"2013-08-20T21:22:37.452Z","objectId":"lLnempTnGg"}},{"success":{"createdAt":"2013-08-20T21:22:37.465Z","objectId":"9PleRgrImM"}},{"success":{"createdAt":"2013-08-20T21:22:37.479Z","objectId":"aorGbOvtoO"}}]'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2013 21:22:37 GMT
+- request:
+    method: get
+    uri: https://W03euqtGHZS5E2ItUyuUalxptRXQSLQljOk115hQ:4Qo41nBz103elVLzMjnKyILoqbXBlHVsjz84sL0E@api.parse.com/1/classes/Post?count=1&where=%7B%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 20 Aug 2013 21:22:37 GMT
+      Etag:
+      - ! '"decf449be239ef81f3490b717422c8d3"'
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlZmFkNWE2NTE0MTY0OTlhZTM5Y2UxZDJhZmNiNjFjNTY%3D--3b45d8f0a8dc00cedc554de97d68714fd5c27d83;
+        domain=.parse.com; path=/; expires=Thu, 19-Sep-2013 21:22:37 GMT; secure;
+        HttpOnly
+      Status:
+      - 200 OK
+      X-Runtime:
+      - '0.044363'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '2114'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"results":[{"title":"skip","author":"0-author","createdAt":"2013-08-20T21:22:37.306Z","updatedAt":"2013-08-20T21:22:37.306Z","objectId":"bFXJwBIpcu"},{"title":"skip","author":"1-author","createdAt":"2013-08-20T21:22:37.317Z","updatedAt":"2013-08-20T21:22:37.317Z","objectId":"vVRoG4M2nM"},{"title":"skip","author":"2-author","createdAt":"2013-08-20T21:22:37.329Z","updatedAt":"2013-08-20T21:22:37.329Z","objectId":"wH9n06iNlD"},{"title":"skip","author":"3-author","createdAt":"2013-08-20T21:22:37.344Z","updatedAt":"2013-08-20T21:22:37.344Z","objectId":"l2WaTeuzjc"},{"title":"skip","author":"4-author","createdAt":"2013-08-20T21:22:37.355Z","updatedAt":"2013-08-20T21:22:37.355Z","objectId":"G55lc5IA5N"},{"title":"skip","author":"5-author","createdAt":"2013-08-20T21:22:37.367Z","updatedAt":"2013-08-20T21:22:37.367Z","objectId":"oG93ynK9kz"},{"title":"skip","author":"6-author","createdAt":"2013-08-20T21:22:37.378Z","updatedAt":"2013-08-20T21:22:37.378Z","objectId":"en6KTPbqaV"},{"title":"skip","author":"7-author","createdAt":"2013-08-20T21:22:37.390Z","updatedAt":"2013-08-20T21:22:37.390Z","objectId":"ghdlpkcaim"},{"title":"skip","author":"8-author","createdAt":"2013-08-20T21:22:37.401Z","updatedAt":"2013-08-20T21:22:37.401Z","objectId":"20yVxF16CO"},{"title":"skip","author":"9-author","createdAt":"2013-08-20T21:22:37.413Z","updatedAt":"2013-08-20T21:22:37.413Z","objectId":"Tqi4LWc16D"},{"title":"skip","author":"10-author","createdAt":"2013-08-20T21:22:37.424Z","updatedAt":"2013-08-20T21:22:37.424Z","objectId":"8N3y984qyx"},{"title":"skip","author":"11-author","createdAt":"2013-08-20T21:22:37.435Z","updatedAt":"2013-08-20T21:22:37.435Z","objectId":"XFiz56Jcdz"},{"title":"skip","author":"12-author","createdAt":"2013-08-20T21:22:37.452Z","updatedAt":"2013-08-20T21:22:37.452Z","objectId":"lLnempTnGg"},{"title":"skip","author":"13-author","createdAt":"2013-08-20T21:22:37.465Z","updatedAt":"2013-08-20T21:22:37.465Z","objectId":"9PleRgrImM"},{"title":"skip","author":"14-author","createdAt":"2013-08-20T21:22:37.479Z","updatedAt":"2013-08-20T21:22:37.479Z","objectId":"aorGbOvtoO"}],"count":15}'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2013 21:22:37 GMT
+- request:
+    method: get
+    uri: https://W03euqtGHZS5E2ItUyuUalxptRXQSLQljOk115hQ:4Qo41nBz103elVLzMjnKyILoqbXBlHVsjz84sL0E@api.parse.com/1/classes/Post?limit=1&skip=14&where=%7B%22title%22:%22skip%22%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 20 Aug 2013 21:22:38 GMT
+      Etag:
+      - ! '"969c688223e05a8ed1fc7422ed381e04"'
+      Server:
+      - nginx/1.2.2
+      Set-Cookie:
+      - _parse_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRiIlNjRjZmY5Y2Y4NTY2Nzc0YTM3ZGI2MTdjOGIwOGNlZGM%3D--fb67bb25a1e4a38ab5a20b7a4e9e4ddd7e55aad9;
+        domain=.parse.com; path=/; expires=Thu, 19-Sep-2013 21:22:38 GMT; secure;
+        HttpOnly
+      Status:
+      - 200 OK
+      X-Runtime:
+      - '0.070747'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '153'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"results":[{"title":"skip","author":"14-author","createdAt":"2013-08-20T21:22:37.479Z","updatedAt":"2013-08-20T21:22:37.479Z","objectId":"aorGbOvtoO"}]}'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2013 21:22:38 GMT
 recorded_with: VCR 2.4.0
