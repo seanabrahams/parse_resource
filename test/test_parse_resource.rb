@@ -357,6 +357,7 @@ class TestParseResource < Test::Unit::TestCase
       p = Post.create(:title => "hello1234567890abc!")
       id = p.id
       p.destroy
+      assert_equal true, p.destroyed?
       assert_equal p.title, nil
       assert_equal 0, Post.where(:title => "hello1234567890abc!", :objectId => id).length
     end
@@ -395,6 +396,9 @@ class TestParseResource < Test::Unit::TestCase
       Post.save_all(objs)
       assert_equal 25, Post.count
       Post.destroy_all(objs)
+      objs.each do |obj|
+        assert_equal true, obj.destroyed?
+      end
       assert_equal 0, Post.count
     end
   end

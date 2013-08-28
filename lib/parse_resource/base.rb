@@ -28,6 +28,7 @@ module ParseResource
     extend ActiveModel::Callbacks
     HashWithIndifferentAccess = ActiveSupport::HashWithIndifferentAccess
 
+    attr_accessor :destroyed
     attr_accessor :error_instances
 
     define_model_callbacks :save, :create, :update, :destroy
@@ -52,6 +53,7 @@ module ParseResource
         @unsaved_attributes = {}
       end
 
+      @destroyed = false
 
       @lazy_loading = !loaded_from_parse
 
@@ -325,17 +327,21 @@ module ParseResource
             return false
           end
           if response && response.is_a?(Array) && response.length == objects.length
-            merge_all_attributes(objects, response) unless method == "DELETE"
+            merge_all_attributes(objects, response, method)
           end
         end
       end
       true
     end
 
-    def self.merge_all_attributes(objects, response)
+    def self.merge_all_attributes(objects, response, method=nil)
       i = 0
       objects.each do |item|
-        item.merge_attributes(response[i]["success"]) if response[i] && response[i]["success"]
+        if method && method == "DELETE"
+          item.destroyed = true if response[i] && response[i]["success"]
+        else
+          item.merge_attributes(response[i]["success"]) if response[i] && response[i]["success"]
+        end
         i += 1
       end
       nil
@@ -436,6 +442,10 @@ module ParseResource
       @class_attributes ||= {}
     end
 
+    def destroyed?
+      !!@destroyed
+    end
+
     def persisted?
       if id
         true
@@ -496,7 +506,6 @@ module ParseResource
     def create
       run_callbacks :update do
         run_callbacks :save do
-
           attrs = attributes_for_saving.to_json
           opts = {:content_type => "application/json"}
           result = self.resource.post(attrs, opts) do |resp, req, res, &block|
@@ -583,6 +592,7 @@ module ParseResource
       if self.instance_resource.delete
         @attributes = {}
         @unsaved_attributes = {}
+        @destroyed = true
         return true
       end
       false
